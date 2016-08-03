@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+	<openerp>
+		<data>
+			<!-- SECCION CON LAS VISTAS -->
+			<!-- Filtro de búsqueda CLIENTE -->
+			<record id="cliente_filter" model="ir.ui.view">
+				<field name="name">cliente.select</field>
+				<field name="model">assaig.cliente</field>
+				<field name="type">search</field>
+				<field name="arch" type="xml">
+					<search string="Buscar cliente">
+							<field name="name" select="1" />
+							<field name="nombre" select="1" />
+							<field name="apellidos" select="1" />
+							<field name="entrega" select="1" />
+					</search>
+				</field>
+			</record> 
+			<!-- Filtro de búsqueda MESA -->
+			<record id="mesa_filter" model="ir.ui.view">
+				<field name="name">mesa.select</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">search</field>
+				<field name="arch" type="xml">
+					<search string="Buscar mesas">
+						<field name="name" select="1" />	
+						<field name="plazas" select="1" />
+						<field name="disponible" select="1" />
+					</search>
+				</field>
+			</record>
+			<!-- Filtro de búsqueda RESERVA -->
+			<record id="reserva_filter" model="ir.ui.view">
+				<field name="name">reserva.select</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">search</field>
+				<field name="arch" type="xml">
+					<search string="Buscar reservas">
+						<field name="cliente_id" select="1" />
+						<field name="fecha_alta" select="1" />
+						<field name="fecha_todo" select="1" />
+					</search>
+				</field>
+			</record>
+
+			<!-- Declarar vista formulario CLIENTE -->
+			<record model="ir.ui.view" id="cliente_form">
+				<field name="name">CLIENTE</field>
+				<field name="model">assaig.cliente</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Cliente">
+						<group col='4' colspan='2'>
+							<field name="name" />
+							<field name="nombre" />
+							<field name="apellidos" />
+							<field name="telefono" widget="masked" context="{'mask':'(99) 999 99 99'}" />
+							<field name="entrega" />
+							<field name="observaciones" />
+							<field name="fecha_alta" readonly="1" />
+						</group>
+					</form>
+				</field>
+			</record>
+			
+			<!-- Declarar vista formulario MESAS -->
+			<record model="ir.ui.view" id="mesa_form">
+				<field name="name">MESAS</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Mesas">
+						<group col='2' colspan='2'>
+							<field name="name" />
+							<field name="plazas" />
+							<field name="disponible" />
+							<field name="disponible2" />
+						</group>
+					</form>
+				</field>
+			</record>
+
+			<!-- Declarar vista formulario RESERVAS -->
+			<record model="ir.ui.view" id="reserva_form">
+				<field name="name">RESERVAS</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Reservas">
+						<group col='2' colspan='2'>					
+							<field name="cliente_id" />
+							
+							<field name="mesa_id" />
+							<field name="fecha_alta" />
+							<field name="fecha_todo" />
+						</group>
+					</form>
+				</field>
+			</record>
+
+			<!-- Declarar vista arbol CLIENTE-->
+			<record model="ir.ui.view" id="cliente_tree">
+				<field name="name">CLIENTE</field>
+				<field name="model">assaig.cliente</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Clientes">
+						<field name="name" />					
+						<field name="nombre" />
+						<field name="apellidos" />
+						<field name="telefono" />
+						<field name="entrega" />
+						<field name="observaciones" />
+						<field name="fecha_alta" />
+					</tree>
+				</field>
+			</record>
+			
+			<!-- Declarar vista arbol MESAS -->
+			<record model="ir.ui.view" id="mesa_tree">
+				<field name="name">MESAS</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Mesas">
+						<field name="name" />
+						<field name="plazas" />
+						<field name="disponible" />
+						<field name="disponible2" />
+					</tree>
+				</field>
+			</record>			
+
+			<!-- Declarar vista arbol RESERVAS -->
+			<record model="ir.ui.view" id="reserva_tree">
+				<field name="name">RESERVAS</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Reservas">
+						<field name="cliente_id" />
+						
+						<field name="mesa_id" />
+						<field name="fecha_alta" />
+						<field name="fecha_todo" />
+					</tree>
+				</field>
+			</record> 
+			
+			<!-- DECLARAR VISTA CALENDAR RESERVAS -->
+			<record model="ir.ui.view" id="reserva_calendar">
+				<field name="name">CALENDARIO RESERVAS</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">calendar</field>
+				<field name="arch" type="xml">
+					<calendar string="Calendario" color="cliente_id" date_start="fecha_todo" mode="month">
+						<field name="cliente_id" />
+						<field name="fecha_alta" />
+						<field name="fecha_todo" />
+					</calendar>
+				</field>
+			</record>
+
+
+			<!-- ACCIONES A REALIZAR CLIENTE-->
+			<record model="ir.actions.act_window" id="action_cliente">
+				<field name="name">CLIENTE</field>
+				<field name="res_model">assaig.cliente</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p>Aún no tienene ningun cliente creado...</p>
+					<div align="center">
+					<img src="/Modulo_Assaig/static/fondo_clientes.jpg" />
+					</div>
+				</field>				
+			</record>
+			
+			<!-- ACCIONES A REALIZAR MESA-->
+			<record model="ir.actions.act_window" id="action_mesa">
+				<field name="name">MESA</field>
+				<field name="res_model">assaig.mesa</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p>Aún no tienene ninguna mesa creada. Puede dar de alta una...</p>
+					<div style="background-color: green">Esto es una prueba</div>
+					<div align="center"><img src="/Modulo_Assaig/static/fondo_mesa.jpg" /></div>
+					<div style="background-color: green">Esto es una prueba</div>					
+				</field>
+			</record>			
+
+			<!-- ACCIONES A REALIZAR RESERVA-->
+			<record model="ir.actions.act_window" id="action_reserva">
+				<field name="name">RESERVA</field>
+				<field name="res_model">assaig.reserva</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form,calendar</field>
+				<field name="help" type="html">
+					<p>Aún no tienene ninguna reserva creada. Cree una reserva...</p>
+					<div style="background-color: red" align="center">Esto es una prueba
+						<img src="/Modulo_Assaig/static/fondo_reserva.jpg" />
+					</div>
+				</field>								
+			</record>			
+			
+			<!-- MENU -->
+			<menuitem id="menu_assaig_main" name="ASSAIG" action="action_cliente" />
+			<menuitem id="menu_assaig_cliente" parent="menu_assaig_main" name="Gestionar Clientes" />
+			<menuitem id="menu_assaig_cliente_alta" parent="menu_assaig_cliente" name="Clientes" action="action_cliente" />
+			
+			<menuitem id="menu_assaig_mesa" parent="menu_assaig_main" name="Gestionar Mesas" />
+			<menuitem id="menu_assaig_mesa_alta" parent="menu_assaig_mesa" name="Mesas" action="action_mesa" />
+
+			<menuitem id="menu_assaig_reserva" parent="menu_assaig_main" name="Gestionar Reservas" />
+			<menuitem id="menu_assaig_reserva_alta" parent="menu_assaig_reserva" name="Reservas" action="action_reserva" />
+			
+		</data>
+	</openerp>
+			
