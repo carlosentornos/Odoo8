@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.openerp .oe_calendar_sidebar_container {
+/*	background-color: #aa00ff; */
+	background-color: #FCE4EC;
+}
+
+.openerp .oe_calendar_sidebar {
+/*	background-color: #e980fc; */
+}
+
+.openerp .oe_calendar_mini {
+/*	background-color: #ea80fc;	*/
+}
+
+.openerp .oe_calendar_responsible {
+/*	background-color: #e1bee7; */
+}
+
+.openerp .oe_view_manager_wrapper {
+/*	background-color: #ad1457; */
+	background-color: #FCE4EC;
+}
+
+.openerp .oe_view_manager_calendar {
+/*	background-color: #f50057; */
+	background-color: #FCE4EC;
+}

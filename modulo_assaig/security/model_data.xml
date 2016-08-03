@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="category_assaig" model="ir.module.category">
+			<field name="name">Restaurante L'Assaig</field>
+			<field name="description">Grupos admin y users de L'Assaig</field>
+	      	<field name="sequence">15</field>
+	    </record>
+	</data>
+</openerp>
+
