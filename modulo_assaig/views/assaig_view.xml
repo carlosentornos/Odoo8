@@ -1,0 +1,646 @@
+<?xml version="1.0"?>
+	<openerp>
+		<data>     
+			<template id="dam_assets_backend" name="Personalizar" inherit_id="web.assets_backend">
+				<xpath expr="." position="inside">
+					<link rel="stylesheet" href="/modulo_assaig/static/src/css/kanban_view.css"/>
+					<link rel="stylesheet" href="/modulo_assaig/static/src/css/form_view.css"/>
+					<link rel="stylesheet" href="/modulo_assaig/static/src/css/tree_view.css"/>
+					<link rel="stylesheet" href="/modulo_assaig/static/src/css/calendar_view.css"/>
+				</xpath>
+			</template>				
+<!-- SECCION CON LAS VISTAS -->
+			<!-- Filtro de búsqueda CLIENTE -->
+			<record id="cliente_filter" model="ir.ui.view">
+				<field name="name">view_cliente_filter</field>
+				<field name="model">assaig.cliente</field>
+				<field name="type">search</field>
+				<field name="arch" type="xml">
+					<search string="Buscar cliente">
+							<field name="nombre" select="1" />
+							<field name="apellidos" select="1" />
+							<field name="fecha_alta" select="1" />
+							<field name="situacion" select="1" /> 
+					</search>
+				</field>
+			</record> 
+			<!-- Filtro de búsqueda MESA -->
+			<!-- muestra mesas comedor y terraza -->
+			<record id="mesa_filter_comedor" model="ir.ui.view">
+				<field name="name">view_mesa_filter</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">search</field>
+				<field name="arch" type="xml">
+					<search string="Buscar mesas">
+						<field name="codigo" select="1" />	
+						<field name="ubicacion" select="1" />
+						<field name="estado" select="1" />
+						<!--
+						<filter name="ubicacion" string="Comedor" domain="[('ubicacion','=','comedor')]"/> -->
+						<filter name="ubicacion2" string="Terraza" domain="[('ubicacion','=','terraza')]"/>
+
+					</search>
+				</field>
+			</record>
+
+<!-- Filtro de búsqueda RESERVA -->
+			<record id="reserva_filter" model="ir.ui.view">
+				<field name="name">view_reserva_filter</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">search</field>
+				<field name="arch" type="xml">
+					<search string="Buscar reservas">
+						<field name="entrega" select="1" />
+						<field name="comensales" select="1" />
+						<field name="tipo_reserva" select="1" />
+						<field name="state" select="1" />
+					</search>
+				</field>
+			</record>
+
+<!-- Declarar vista formulario CLIENTE -->
+			<record model="ir.ui.view" id="cliente_form">
+				<field name="name">view_cliente_form</field>
+				<field name="model">assaig.cliente</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Cliente">
+						<sheet class="my_background_sheet">
+							<newline/>
+							<h1><field name="name"/></h1>
+							<newline/>
+							<group string="Datos del cliente:" col='4' colspan='2'>
+								<field name="nombre" width="200" height="200"/>
+								<field name="apellidos" />
+								<field name="telefono" />
+								<field name="movil" />
+								<field name="fecha_alta" readonly="1" />
+								<field name="situacion" />
+								<newline/>
+								<separator string="Información adicional:" colspan="4"/>
+								<newline/>
+								<notebook colspan="4">
+									<page string="Reservas realizadas"  >
+										<field name="cliente_reserva_id" widget="one2many_list" readonly="1" edit="false">
+											<tree string="Reservas" colors="#006400:state=='pendiente';#A52A2A:state=='anulada'; #0000FF:state=='servida'" fonts="bold:state=='pendiente'" class="my_background_sheet">
+												<field name="mesa_id"/>
+												<field name="tipo_reserva"/>
+												<field name="entrega"/>
+												<field name="comensales"/>
+												<field name="fecha_todo"/>
+												<field name="state"/>
+											</tree>
+										</field>
+									</page>
+									<page string="Observaciones">
+										<field name="observaciones" colspan="4" nolabel="1" placeholder="Escriba aquí sus observaciones..."/>
+									</page>
+									<page string="Histórico">
+										<separator string="Creado por:"/>
+										<field name="create_uid" readonly="1"/>
+										<field name="create_date" readonly="1"/>
+										<separator string="Última modificación:"/>
+										<field name="write_uid" readonly="1"/>
+										<field name="write_date" readonly="1"/>
+									</page>
+								</notebook>
+							</group>
+						</sheet>
+					</form>
+				</field>
+			</record>
+			
+<!-- Declarar vista formulario MESAS -->
+			<record model="ir.ui.view" id="mesa_form">
+				<field name="name">view_mesa_form</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Mesas">
+					<!--
+						<header>
+							<div style="color:blue;" align="center"><p>Esta es la cabecera...</p></div>
+						</header>
+					-->
+						<sheet class="my_background_sheet">
+							<newline/>
+							<h1>Datos de la Mesa</h1>
+							<newline/>
+							<separator string="Foto:" />
+							<field name="foto_mesa" widget="image" class="oe_avatar oe_left"/>
+							<group col="2" colspan="1">
+								<field name="name" />
+							</group>
+							<group string="Detalle:" col='6' colspan='1'>
+								<field name="codigo" />
+								<field name="ubicacion" />
+								<field name="comensales" />
+								<field name="estado" />	
+							</group>
+							<notebook colspan="4">
+								<page string="Observaciones" col="1" colspan="1">
+									<field name="observaciones" placeholder="Escriba aquí sus observaciones..."/>
+								</page>
+									<page string="Histórico">
+										<separator string="Creado por:"/>
+										<field name="create_uid" readonly="1"/>
+										<field name="create_date" readonly="1"/>
+										<separator string="Última modificación:"/>
+										<field name="write_uid" readonly="1"/>
+										<field name="write_date" readonly="1"/>
+									</page>
+							</notebook>
+						</sheet>
+						<!-- <div class="oe_chatter" align="center">Esto es el pie...</div> -->
+					</form>
+				</field>
+			</record>
+
+<!-- Declarar vista formulario RESERVAS -->
+			<record model="ir.ui.view" id="reserva_form">
+				<field name="name">view_reserva_form</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Reservas">
+						<sheet class="my_background_sheet">
+							<newline/>
+							<h1>Datos de la Reserva</h1>
+							<newline/>
+							<group col='4' colspan='2'>				
+								<field name="cliente_id" options="{'no_open':True,'no_create_edit':True}" placeholder="Seleccione un cliente"/>
+								<field name="mesa_id" options="{'no_open':True,'no_create_edit':True}" placeholder="Seleccione una mesa"/>
+								<field name="tipo_reserva" placeholder="-- Elija un tipo --"/>
+								<field name="entrega" />								
+								<field name="comensales" />
+								<field name="fecha_todo" />
+							</group>
+							<group string="Estado de la reserva" col='6' colspan='1'>
+								<field name="state" readonly="1"/>
+								<div class="oe_button_box oe_center oe_list_buttons">
+									<button class="oe_button my_oe_highlight_green oe_read_only" string="Activar" name="activa_reserva_f" type="object" states="anulada"/>
+									<button class="oe_button oe_highlight oe_read_only" string="Anular" name="anula_reserva_f" type="object" states="pendiente"/>
+									<button class="oe_button my_oe_highlight_blue oe_read_only" string="Servir" name="servir_reserva_f" type="object" states="pendiente"/>
+									<button class="oe_button my_oe_highlight_orange oe_read_only" string="Revertir" name="cambia_reserva_f" type="object" states="servida"/>
+								</div>
+							</group>	
+							<notebook colspan="4">
+								<page string="Observaciones" col="1" colspan="1">
+										<field name="observaciones" placeholder="Escriba aquí sus observaciones..."/>
+								</page>
+								<page string="Histórico">
+									<separator string="Creado por:"/>
+									<field name="create_uid" readonly="1"/>
+									<field name="create_date" readonly="1"/>
+									<separator string="Última modificación:"/>
+									<field name="write_uid" readonly="1"/>
+									<field name="write_date" readonly="1"/>
+								</page>
+							</notebook>
+						</sheet>						
+					</form>
+				</field>
+			</record>
+
+<!-- Declarar vista formulario CONFIGURACION -->
+			<record model="ir.ui.view" id="configuracion_form">
+				<field name="name">view_configuracion_form</field>
+				<field name="model">assaig.configuracion</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Configuraciones">
+						<sheet class="my_background_sheet">
+							<newline/>
+							<h1>Detalle de la configuración</h1>
+							<newline/>
+							<group col='2' colspan='2'>
+								<field name="name" />
+								<field name="superficie" />
+								<field name="total_comensales" />
+								<field name="estado" />
+							</group>
+						</sheet>
+					</form>
+				</field>
+			</record>
+
+<!-- Declarar vista arbol CLIENTE-->
+			<record model="ir.ui.view" id="cliente_tree">
+				<field name="name">view_cliente_tree</field>
+				<field name="model">assaig.cliente</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree editable="top" delete="true" string="Clientes" colors="gray:situacion=='moroso';green:situacion=='activo'; red:situacion=='baja'" fonts="bold:situacion!='activo' or situacion=='activo'" class="my_background_row2">
+						<field name="apellidos"/>					
+						<field name="nombre" />
+						<field name="telefono" />
+						<field name="movil" />
+						<field name="observaciones" placeholder="Notas sobre el cliente"/>
+						<field name="fecha_alta" readonly="1"/>
+						<field name="situacion"/>
+					</tree>
+				</field>
+			</record>
+			
+<!-- Declarar vista arbol MESAS -->
+			<record model="ir.ui.view" id="mesa_tree">
+				<field name="name">view_mesa_tree</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Mesas" colors="red:estado=='no_disponible'" fonts="underline:estado=='disponible'" class="my_background_row2">
+						<field name="codigo" />
+						<field name="ubicacion" />
+						<field name="comensales" />
+						<field name="estado" />
+					</tree>
+				</field>
+			</record>			
+
+<!-- Declarar vista arbol RESERVAS -->
+			<record model="ir.ui.view" id="reserva_tree">
+				<field name="name">view_my_reserva_tree</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Reservas" colors="#006400:state=='pendiente';#A52A2A:state=='anulada'; #0000FF:state=='servida'" fonts="bold:state=='pendiente'" class="my_background_row2">
+						<!-- <field name="id"/> -->
+						<field name="cliente_id"/>
+						<field name="mesa_id"/>
+						<field name="tipo_reserva"/>
+						<field name="entrega"/>
+						<field name="comensales"/>
+						<field name="fecha_todo"/>
+						<field name="observaciones"/>
+						<field name="state"/>
+					</tree>
+				</field>
+			</record> 
+
+<!-- Declarar vista arbol CONFIGURACION -->
+			<record model="ir.ui.view" id="configuration_tree">
+				<field name="name">view_configuracion_tree</field>
+				<field name="model">assaig.configuracion</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Mantenimientos" class="my_background_row2">
+						<field name="name" />
+						<field name="superficie" />
+						<field name="total_comensales" />
+						<field name="estado" />
+					</tree>
+				</field>
+			</record>			
+			
+<!-- DECLARAR VISTA CALENDAR RESERVAS -->
+			<record model="ir.ui.view" id="reserva_calendar">
+				<field name="name">view_reservas_calendar</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">calendar</field>
+				<field name="arch" type="xml">
+					<calendar string="Calendario" color="cliente_id" date_start="fecha_todo" mode="week">
+						<field name="cliente_id" />
+						<field name="fecha_todo" />
+					</calendar>
+				</field>
+			</record>
+
+<!-- DECLARAR VISTA KANBAN EN MESAS -->
+			<record id="mesa_kanban_1" model="ir.ui.view">
+				<field name="name">view_mesas_kanban1</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">kanban</field>
+				<field name="arch" type="xml">
+					<kanban>
+						<field name="codigo" />
+						<field name="comensales" />
+						<field name="foto_mesa" /> 
+						<field name="ubicacion"/>
+						<templates>
+	                    	<t t-name="kanban-box">
+	                            <div class="oe_product_vignette my_kanban">
+	                                <a type="open">
+	                                    <img class="oe_kanban_image my_kanban_image"
+	                                        t-att-src="kanban_image('assaig.mesa', 'foto_mesa', record.id.value)"/>
+	                                </a>
+	                                <div class="oe_product_desc">
+	                                    <h4>
+	                                        <a type="edit" class="my_kanban_text_main">
+	                                            <field name="codigo"></field>
+	                                        </a>
+	                                    </h4>
+	                                    <p></p>
+	                                    <ul>
+	                                        <li class="my_kanban_text">Comensales: <field name="comensales"/></li>
+	                                        <li class="my_kanban_text">Estado: <field name="estado"/></li>
+	                                        <li class="my_kanban_text">Ubicación: <field name="ubicacion"/></li>
+	                                    <!--
+	                                        <tr>
+	                                        	<th align="left"><a type="delete">Borrar</a></th>
+	                                        	<th> - </th>
+	                                        	<th align="right"><a type="edit">Editar</a></th>
+	                                        </tr>
+	                                    -->
+	                                    </ul>
+	                                </div>
+	                            </div>
+	                        </t>
+	                    </templates>
+					</kanban>
+				</field>
+			</record>
+					
+			<record id="mesa_kanban_2" model="ir.ui.view">
+				<field name="name">view_mesas_kanban2</field>
+				<field name="model">assaig.mesa</field>
+				<field name="type">kanban</field>
+				<field name="arch" type="xml">
+					<kanban>
+						<field name="codigo" />
+						<field name="comensales" />
+						<field name="foto_mesa" /> 
+						<field name="ubicacion"/>
+						<templates>
+	                    	<t t-name="kanban-box">
+	                            <div class="oe_module_vignette my_kanban_2">                          
+	                                <img t-att-src="kanban_image('assaig.mesa', 'foto_mesa', record.id.value)" class="oe_avatar oe_kanban_avatar_smallbox my_kanban_image_2"/>
+	                                <div class="oe_module_desc">
+	                                	<table class="oe_kanban_table">
+	                                		<tr>
+	                                			<th>
+	                                				<h4>		
+	                                					<span class="my_kanban_text_main"><field name="codigo"/></span>	
+	                                				</h4>
+	                                			</th>
+	                                			<tr>
+	                                				<th class="my_kanban_text">Comensales: <field name="comensales"/></th>
+	                                			</tr>
+	                                			<tr>
+	                                				<th class="my_kanban_text">Ubicación: <field name="ubicacion"/></th>
+	                                			</tr>
+	                                			<tr>
+	                                				<th class="my_kanban_text">Estado: <field name="estado"/></th>
+	                                			</tr>
+	                                			<tr>
+	                                				<p></p>
+	                                			</tr>	                                			
+	                                			<tr>
+	                                				<th>
+	                                					<button class="oe_button oe_highlight"><a type="delete">Borrar</a></button>
+	                                					<button class="oe_button my_oe_highlight_blue"><a type="edit">Editar</a></button>
+	                                				</th>
+	                                			</tr>
+	                                		</tr>
+	                                	</table>
+	                                </div>
+	                            </div>
+	                       	</t>
+	                    </templates>
+					</kanban>
+				</field>
+			</record>
+
+<!-- DECLARAR VISTA GRAPH EN CLIENTES -->
+			<record model="ir.ui.view" id="view_alta_cliente_graph">
+				<field name="name">view_reservas_fecha_graph</field>
+				<field name="model">assaig.cliente</field>
+				<field name="type">graph</field>
+				<field name="arch" type="xml">
+					<graph type="pie">
+						<field name="situacion"/>
+					</graph>
+				</field>
+			</record>
+
+<!-- DECLARAR VISTA GRAPH EN RESERVAS -->
+			<record model="ir.ui.view" id="view_tipo_reserva_graph">
+				<field name="name">view_reservas_graph</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">graph</field>
+				<field name="arch" type="xml">
+					<graph type="pie">
+						<field name="tipo_reserva"/>					
+					</graph>
+				</field>
+			</record>
+
+			<record model="ir.ui.view" id="view_estado_reserva_graph">
+				<field name="name">view_reservas_estado_graph</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">graph</field>
+				<field name="arch" type="xml">
+					<graph type="bar" Stacked="True">
+						<field name="state"/>
+						<field name="fecha_todo"/>
+						<field name="cliente_id"/>					
+					</graph>
+				</field>
+			</record>
+
+			<record model="ir.ui.view" id="view_entrega_reserva_graph">
+				<field name="name">view_reservas_fecha_graph</field>
+				<field name="model">assaig.reserva</field>
+				<field name="type">graph</field>
+				<field name="arch" type="xml">
+					<graph type="pivot">						
+						<field name="fecha_todo" type="row" interval="month"/>
+						<field name="entrega" type="mesure" operator="+"/>
+					</graph>
+				</field>
+			</record>
+
+<!-- ACCIONES A REALIZAR CLIENTE-->
+			<record model="ir.actions.act_window" id="action_cliente">
+				<field name="name">Clientes</field>
+				<field name="res_model">assaig.cliente</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Pulse el botón "crear"
+					</p>
+					<p>Aún no tienene ningun cliente creado...</p>
+					<p class="texto_error_search">También es posible que la búsqueda no diera ningún resultado.</p>	
+					<div align="center">
+						<img src="/modulo_assaig/static/src/img/fondo_clientes.jpg" />
+					</div>
+					<div class="oe_chatter my_footer" align="left">
+						<p>PROYECTO 2º DAM CURSO 2014 - 2015</p>
+					</div>
+				</field>				
+			</record>
+
+			<record model="ir.actions.act_window" id="action_alta_cliente_graph">
+				<field name="name">Situación de los clientes</field>
+				<field name="res_model">assaig.cliente</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">graph</field>
+				<field name="view_id" ref="view_alta_cliente_graph"/>							
+			</record>
+			
+<!-- ACCIONES A REALIZAR MESA-->
+			<record model="ir.actions.act_window" id="action_mesa">
+				<field name="name">Mesas</field>
+				<field name="res_model">assaig.mesa</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Pulse el botón "crear"
+					</p>					
+					<p>Aún no tienene ninguna mesa creada. Puede dar de alta una...</p>
+					<p class="texto_error_search">También es posible que la búsqueda no diera ningún resultado.</p>										
+					<div align="center">
+						<img src="/modulo_assaig/static/src/img/fondo_mesa_main.jpg" />
+					</div>
+					<div class="oe_chatter my_footer" align="left">
+						<p>PROYECTO 2º DAM CURSO 2014 - 2015</p>
+					</div>
+				</field>
+			</record>			
+
+			<record model="ir.actions.act_window" id="action_mesa_1">
+				<field name="name">Distribución mesas comedor</field>
+				<field name="res_model">assaig.mesa</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">kanban,form</field>
+				<field name="view_id" ref="mesa_kanban_1"/>
+				<!-- <field name="context">{'search_default_ubicacion': 1}</field> -->
+				<field name="domain">[('ubicacion','=','comedor')]</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Pulse el botón "crear"
+					</p>					
+					<p>No hay mesas creadas para el comedor. Puede dar de alta una...</p>
+					<p class="texto_error_search">También es posible que la búsqueda no diera ningún resultado.</p>
+					<div align="center">
+						<img src="/modulo_assaig/static/src/img/fondo_mesa.jpg" />
+					</div>
+					<div class="oe_chatter my_footer" align="left">
+						<p>PROYECTO 2º DAM CURSO 2014 - 2015</p>
+					</div>
+				</field>
+			</record>
+
+			<record model="ir.actions.act_window" id="action_mesa_2">
+				<field name="name">Distribución mesas terraza</field>
+				<field name="res_model">assaig.mesa</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">kanban,form</field>
+				<field name="view_id" ref="mesa_kanban_2"/>
+				<field name="context">{'search_default_ubicacion2': 1}</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Pulse el botón "crear"
+					</p>					
+					<p>No hay mesas creadas para la terraza. Puede dar de alta una...</p>
+					<p class="texto_error_search">También es posible que la búsqueda no diera ningún resultado.</p>					
+					<div align="center">
+						<img src="/modulo_assaig/static/src/img/fondo_terraza_new.jpg" />
+					</div>
+					<div class="oe_chatter my_footer" align="left">
+						<p>PROYECTO 2º DAM CURSO 2014 - 2015</p>
+					</div>
+				</field>
+			</record>
+
+<!-- ACCIONES A REALIZAR RESERVA-->
+			<record model="ir.actions.act_window" id="action_reserva">
+				<field name="name">Reservas</field>
+				<field name="res_model">assaig.reserva</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Pulse el botón "crear"
+					</p>					
+					<p>Aún no tienene ninguna reserva creada. Cree una reserva...</p>
+					<p class="texto_error_search">También es posible que la búsqueda no diera ningún resultado.</p>
+					<div align="center">
+						<img src="/modulo_assaig/static/src/img/fondo_calendario_generico.gif" />
+					</div>
+					<div class="oe_chatter my_footer" align="left">
+						<p>PROYECTO 2º DAM CURSO 2014 - 2015</p>
+					</div>
+				</field>								
+			</record>
+
+			<record model="ir.actions.act_window" id="action_tipo_reserva_graph">
+				<field name="name">Tipos de reservas</field>
+				<field name="res_model">assaig.reserva</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">graph</field>
+				<field name="view_id" ref="view_tipo_reserva_graph"/>							
+			</record>
+
+			<record model="ir.actions.act_window" id="action_estado_reserva_graph">
+				<field name="name">Estado de las reservas</field>
+				<field name="res_model">assaig.reserva</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">graph</field>
+				<field name="view_id" ref="view_estado_reserva_graph"/>							
+			</record>	
+
+			<record model="ir.actions.act_window" id="action_entrega_reserva_graph">
+				<field name="name">Entregas a cuenta</field>
+				<field name="res_model">assaig.reserva</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">graph</field>
+				<field name="view_id" ref="view_entrega_reserva_graph"/>							
+			</record>
+
+			<record model="ir.actions.act_window" id="action_reserva_calendar">
+				<field name="name">Calendario de reservas</field>
+				<field name="res_model">assaig.reserva</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">calendar</field>							
+			</record>
+
+<!-- ACCIONES A REALIZAR CONFIGURACION -->			
+			<record model="ir.actions.act_window" id="action_configuracion">
+				<field name="name">Configuración</field>
+				<field name="res_model">assaig.configuracion</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Pulse el botón "crear"
+					</p>
+					<p>Aún no ha dado de alta ninguna configuración</p>
+					<p class="texto_error_search">También es posible que la búsqueda no diera ningún resultado.</p>
+					<div align="center">
+						<img src="/modulo_assaig/static/src/img/fondo_configuracion.png" />
+					</div>
+					<div class="oe_chatter my_footer" align="left">
+						<p>PROYECTO 2º DAM CURSO 2014 - 2015</p>
+					</div>
+				</field>				
+			</record>
+
+			<!-- MENU -->
+			<menuitem id="menu_assaig_main" name="L'Assaig" action="action_cliente" />
+
+			<menuitem id="menu_assaig_cliente" parent="menu_assaig_main" name="Gestionar Clientes" sequence="1"/>
+			<menuitem id="menu_assaig_cliente_alta" parent="menu_assaig_cliente" name="Clientes" action="action_cliente" />
+			
+			<menuitem id="menu_assaig_mesa" parent="menu_assaig_main" name="Gestionar Mesas" sequence="2"/>
+			<menuitem id="menu_assaig_mesa_alta" parent="menu_assaig_mesa" name="Mesas" action="action_mesa" sequence="1"/>
+			<menuitem id="menu_assaig_mesa_alta1" parent="menu_assaig_mesa" name="Distribución comedor" action="action_mesa_1" sequence="2"/>
+			<menuitem id="menu_assaig_mesa_alta2" parent="menu_assaig_mesa" name="Distribución terraza" action="action_mesa_2" sequence="3"/>			
+
+			<menuitem id="menu_assaig_reserva" parent="menu_assaig_main" name="Gestionar Reservas" sequence="3"/>
+			<menuitem id="menu_assaig_reserva_alta" parent="menu_assaig_reserva" name="Reservas" action="action_reserva" />
+			<menuitem id="menu_assaig_reserva_calendar" parent="menu_assaig_reserva" name="Calendario" action="action_reserva_calendar"/>
+
+			<menuitem id="menu_assaig_config" parent="menu_assaig_main" name="Configuración" sequence="5"/>
+			<menuitem id="menu_assaig_config_mesa" parent="menu_assaig_config" name="Mantenimiento" action="action_configuracion"/>
+
+			<menuitem id="menu_assaig_resumen" parent="menu_assaig_main" name="Resumen según" sequence="4" groups="group_assaig_admin"/>
+			<menuitem id="menu_assaig_resumen_1" parent="menu_assaig_resumen" name="Tipo de reserva" action="action_tipo_reserva_graph"/>
+			<menuitem id="menu_assaig_resumen_2" parent="menu_assaig_resumen" name="Estado de la reserva" action="action_estado_reserva_graph"/>
+			<menuitem id="menu_assaig_resumen_3" parent="menu_assaig_resumen" name="Entregas a cuenta" action="action_entrega_reserva_graph"/>
+			<menuitem id="menu_assaig_resumen_4" parent="menu_assaig_resumen" name="Situación de los clientes" action="action_alta_cliente_graph"/>
+
+		</data>
+	</openerp>
+			

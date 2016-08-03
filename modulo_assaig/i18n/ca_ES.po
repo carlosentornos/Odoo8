@@ -1,0 +1,597 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* modulo_assaig
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-23 16:28+0000\n"
+"PO-Revision-Date: 2015-04-24 10:37+0100\n"
+"Last-Translator: 11 <este@no.es>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "-- Elija un tipo --"
+msgstr "-- Selecció del tipus --"
+
+#. module: modulo_assaig
+#: model:ir.actions.act_window,help:modulo_assaig.action_mesa
+#: model:ir.actions.act_window,help:modulo_assaig.action_mesa2
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Pulse el botón \"crear\"\n"
+"					</p>					\n"
+"					<p>Aún no tienene ninguna mesa creada. Puede dar de alta una...</p>\n"
+"					\n"
+"					<div align=\"center\">\n"
+"						<img src=\"/modulo_assaig/static/src/img/fondo_mesa.jpg\"/>\n"
+"					</div>\n"
+"				"
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Polse el botó \"crear\"\n"
+"					</p>					\n"
+"					<p>Encara no té taules creades. Pots donar d'alta una...</p>\n"
+"					\n"
+"					<div align=\"center\">\n"
+"						<img src=\"/modulo_assaig/static/src/img/fondo_mesa.jpg\"/>\n"
+"					</div>\n"
+"				"
+
+#. module: modulo_assaig
+#: model:ir.actions.act_window,help:modulo_assaig.action_reserva
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Pulse el botón \"crear\"\n"
+"					</p>					\n"
+"					<p>Aún no tienene ninguna reserva creada. Cree una reserva...</p>\n"
+"					<div align=\"center\">\n"
+"						<img src=\"/modulo_assaig/static/src/img/fondo_calendario_generico.gif\"/>\n"
+"					</div>\n"
+"				"
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Polse el botó \"crear\"\n"
+"					</p>					\n"
+"					<p>Encara no té taules creades. Pots donar d'alta una...</p>\n"
+"					<div align=\"center\">\n"
+"						<img src=\"/modulo_assaig/static/src/img/fondo_calendario_generico.gif\"/>\n"
+"					</div>\n"
+"				"
+
+#. module: modulo_assaig
+#: model:ir.actions.act_window,help:modulo_assaig.action_configuracion
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Pulse el botón \"crear\"\n"
+"					</p>\n"
+"					<p>Aún no ha dado de alta ninguna configuración</p>\n"
+"				"
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Polse el botó \"crear\"\n"
+"					</p>\n"
+"					<p>Encara no té taules creades. Pots donar d'alta una...</p>\n"
+"				"
+
+#. module: modulo_assaig
+#: model:ir.actions.act_window,help:modulo_assaig.action_cliente
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Pulse el botón \"crear\"\n"
+"					</p>\n"
+"					<p>Aún no tienene ningun cliente creado...</p>\n"
+"					<div align=\"center\">\n"
+"						<img src=\"/modulo_assaig/static/src/img/fondo_clientes.jpg\"/>\n"
+"					</div>\n"
+"				"
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"						Polse el botó \"crear\"\n"
+"					</p>\n"
+"					<p>Encara no té taules creades. Pots donar d'alta una...</p>\n"
+"					<div align=\"center\">\n"
+"						<img src=\"/modulo_assaig/static/src/img/fondo_clientes.jpg\"/>\n"
+"					</div>\n"
+"				"
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_kanban
+msgid "Activa:"
+msgstr "Activa:"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Activar"
+msgstr "Activar"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,activo:0
+#: field:assaig.configuracion,estado:0
+msgid "Activo"
+msgstr "Actiu"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,fecha_alta:0
+msgid "Alta"
+msgstr "Alta"
+
+#. module: modulo_assaig
+#: help:assaig.cliente,observaciones:0
+msgid "Anotaciones sobre el cliente"
+msgstr "Anotacions del client"
+
+#. module: modulo_assaig
+#: selection:assaig.reserva,state:0
+msgid "Anulada"
+msgstr "Anulada"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Anular"
+msgstr "Anular"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,apellidos:0
+msgid "Apellidos"
+msgstr "Cognoms"
+
+#. module: modulo_assaig
+#: help:assaig.cliente,apellidos:0
+msgid "Apellidos del cliente."
+msgstr "Cognoms del client."
+
+#. module: modulo_assaig
+#: help:assaig.mesa,foto_mesa:0
+msgid "Añadir imagen según comensales."
+msgstr "Afegir imatge segons nombre de places."
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_filter
+msgid "Buscar cliente"
+msgstr "Cercar client"
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_filter
+msgid "Buscar mesas"
+msgstr "Cercar taules"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_filter
+msgid "Buscar reservas"
+msgstr "Cercar reserves"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_calendar
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_reserva_calendar
+msgid "Calendario"
+msgstr "Calendari"
+
+#. module: modulo_assaig
+#: field:assaig.configuracion,superficie:0
+msgid "Capacidad en mesas"
+msgstr "Capacitat en taules"
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_form
+#: field:assaig.reserva,cliente_id:0
+msgid "Cliente"
+msgstr "Client"
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_tree
+#: model:ir.actions.act_window,name:modulo_assaig.action_cliente
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_cliente_alta
+msgid "Clientes"
+msgstr "Clients"
+
+#. module: modulo_assaig
+#: selection:assaig.mesa,ubicacion:0
+msgid "Comedor"
+msgstr "Menjador"
+
+#. module: modulo_assaig
+#: view:assaig.configuracion:modulo_assaig.configuracion_form
+msgid "Configuraciones"
+msgstr "Configuracions"
+
+#. module: modulo_assaig
+#: model:ir.actions.act_window,name:modulo_assaig.action_configuracion
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_config
+msgid "Configuración"
+msgstr "Configuració"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,create_uid:0
+#: field:assaig.configuracion,create_uid:0
+#: field:assaig.mesa,create_uid:0
+#: field:assaig.reserva,create_uid:0
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,create_date:0
+#: field:assaig.configuracion,create_date:0
+#: field:assaig.mesa,create_date:0
+#: field:assaig.reserva,create_date:0
+msgid "Created on"
+msgstr "Creat sota"
+
+#. module: modulo_assaig
+#: field:assaig.mesa,codigo:0
+msgid "Código"
+msgstr "Codi"
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_form
+msgid "Datos del cliente"
+msgstr "Dades del client"
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_form
+msgid "Detalle:"
+msgstr "Detalls"
+
+#. module: modulo_assaig
+#: selection:assaig.mesa,estado:0
+msgid "Disponible"
+msgstr "Disponibilitat"
+
+#. module: modulo_assaig
+#: model:ir.actions.act_window,name:modulo_assaig.action_mesa2
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_mesa_alta2
+msgid "Distribución de las mesas."
+msgstr "Distribució de les taules."
+
+#. module: modulo_assaig
+#: help:assaig.mesa,codigo:0
+msgid "Ejemplo >>> MESA-XX"
+msgstr "Exemple >>> TAULA-XX"
+
+#. module: modulo_assaig
+#: help:assaig.cliente,telefono:0
+msgid "Ejemplos >>> Teléfono 999999999"
+msgstr "Exemples >>> Telèfon 999999999"
+
+#. module: modulo_assaig
+#: sql_constraint:assaig.cliente:0
+msgid "El cliente ya existe"
+msgstr "El client ja existeix!"
+
+#. module: modulo_assaig
+#: selection:assaig.reserva,tipo_reserva:0
+msgid "Email"
+msgstr "Correu"
+
+#. module: modulo_assaig
+#: selection:assaig.reserva,tipo_reserva:0
+msgid "En persona"
+msgstr "En persona"
+
+#. module: modulo_assaig
+#: field:assaig.reserva,entrega:0
+msgid "Entrega"
+msgstr "Lliurament"
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_form
+#: view:assaig.mesa:modulo_assaig.mesa_form
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Escriba aquí sus observaciones..."
+msgstr "Escriga ací les seves observacions..."
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_form
+msgid "Esta es la cabecera..."
+msgstr "Esta es la cabecera..."
+
+#. module: modulo_assaig
+#: field:assaig.mesa,estado:0
+#: field:assaig.reserva,state:0
+msgid "Estado"
+msgstr "Situació"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Estado de la reserva"
+msgstr "Situació de la reserva"
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_form
+msgid "Esto es el pie..."
+msgstr "Esto es el pie..."
+
+#. module: modulo_assaig
+#: help:assaig.reserva,entrega:0
+msgid "Euros entregados por el cliente."
+msgstr "Euros lliurats pel client."
+
+#. module: modulo_assaig
+#: field:assaig.reserva,fecha_todo:0
+msgid "Fecha reserva"
+msgstr "Data reserva"
+
+#. module: modulo_assaig
+#: field:assaig.mesa,foto_mesa:0
+msgid "Foto"
+msgstr "Foto"
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_form
+msgid "Foto:"
+msgstr "Foto:"
+
+#. module: modulo_assaig
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_cliente
+msgid "Gestionar Clientes"
+msgstr "Gestionar Clients"
+
+#. module: modulo_assaig
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_mesa
+msgid "Gestionar Mesas"
+msgstr "Gestionar Taules"
+
+#. module: modulo_assaig
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_reserva
+msgid "Gestionar Reservas"
+msgstr "Gestionar Reserves"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,id:0
+#: field:assaig.configuracion,id:0
+#: field:assaig.mesa,id:0
+#: field:assaig.reserva,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_form
+msgid "Información adicional:"
+msgstr "Informació addicional:"
+
+#. module: modulo_assaig
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_main
+msgid "L'Assaig"
+msgstr "L'Assaig"
+
+#. module: modulo_assaig
+#: sql_constraint:assaig.mesa:0
+msgid "La mesa ya existe."
+msgstr "La taula ja existeix!"
+
+#. module: modulo_assaig
+#: sql_constraint:assaig.reserva:0
+msgid "La reserva ya existe."
+msgstr "La reserva ja existeix!"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,write_uid:0
+#: field:assaig.configuracion,write_uid:0
+#: field:assaig.mesa,write_uid:0
+#: field:assaig.reserva,write_uid:0
+msgid "Last Updated by"
+msgstr "Darrera actualització per"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,write_date:0
+#: field:assaig.configuracion,write_date:0
+#: field:assaig.mesa,write_date:0
+#: field:assaig.reserva,write_date:0
+msgid "Last Updated on"
+msgstr "Darrera actualització sota"
+
+#. module: modulo_assaig
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_config_mesa
+msgid "Mantenimiento"
+msgstr "Manteniment"
+
+#. module: modulo_assaig
+#: view:assaig.configuracion:modulo_assaig.configuration_tree
+msgid "Mantenimientos"
+msgstr "Manteniments"
+
+#. module: modulo_assaig
+#: field:assaig.configuracion,total_comensales:0
+msgid "Max. Comensales"
+msgstr "Max. Comensals"
+
+#. module: modulo_assaig
+#: field:assaig.reserva,mesa_id:0
+msgid "Mesa"
+msgstr "Taula"
+
+#. module: modulo_assaig
+#: help:assaig.configuracion,superficie:0
+msgid "Mesa-base = 4 comensales"
+msgstr "Taula-base = 4 comensals"
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_form
+#: view:assaig.mesa:modulo_assaig.mesa_tree
+#: model:ir.actions.act_window,name:modulo_assaig.action_mesa
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_mesa_alta
+msgid "Mesas"
+msgstr "Taules"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,moroso:0
+msgid "Moroso"
+msgstr "Morós"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,movil:0
+#: selection:assaig.reserva,tipo_reserva:0
+msgid "Móvil"
+msgstr "Mòvil"
+
+#. module: modulo_assaig
+#: help:assaig.cliente,movil:0
+msgid "Móvil 999999999"
+msgstr "Mòvil 999999999"
+
+#. module: modulo_assaig
+#: selection:assaig.mesa,estado:0
+msgid "No disponible"
+msgstr "No disponible"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,nombre:0
+#: field:assaig.configuracion,name:0
+msgid "Nombre"
+msgstr "Nom"
+
+#. module: modulo_assaig
+#: help:assaig.cliente,nombre:0
+msgid "Nombre del cliente."
+msgstr "Nom del client."
+
+#. module: modulo_assaig
+#: field:assaig.cliente,name:0
+msgid "Nombre y Apellidos"
+msgstr "Nom i Cognoms"
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_tree
+msgid "Notas sobre el cliente"
+msgstr "Notes sobre el client"
+
+#. module: modulo_assaig
+#: help:assaig.mesa,plazas:0
+msgid ""
+"Numero de comensales\n"
+"Mínimo 1 persona."
+msgstr ""
+"Nombre de comensals\n"
+"Mínim 1 persona."
+
+#. module: modulo_assaig
+#: help:assaig.reserva,plazas:0
+msgid ""
+"Numero de comensales.\n"
+"Mínimo 2."
+msgstr ""
+"Nombre de comensals.\n"
+"Mínim 2."
+
+#. module: modulo_assaig
+#: view:assaig.cliente:modulo_assaig.cliente_form
+#: field:assaig.cliente,observaciones:0
+#: view:assaig.mesa:modulo_assaig.mesa_form
+#: field:assaig.mesa,observaciones:0
+#: view:assaig.reserva:modulo_assaig.reserva_form
+#: field:assaig.reserva,observaciones:0
+msgid "Observaciones"
+msgstr "Observacions"
+
+#. module: modulo_assaig
+#: selection:assaig.reserva,state:0
+msgid "Pendiente"
+msgstr "Pendent"
+
+#. module: modulo_assaig
+#: field:assaig.mesa,plazas:0
+#: field:assaig.reserva,plazas:0
+msgid "Plazas"
+msgstr "Places"
+
+#. module: modulo_assaig
+#: view:assaig.mesa:modulo_assaig.mesa_kanban
+msgid "Plazas:"
+msgstr "Places:"
+
+#. module: modulo_assaig
+#: field:assaig.mesa,name:0
+msgid "Referencia"
+msgstr "Referència"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,cliente_reserva_id:0
+msgid "Reserva cliente"
+msgstr "Reserva client"
+
+#. module: modulo_assaig
+#: field:assaig.mesa,mesa_reserva_id:0
+msgid "Reserva mesa"
+msgstr "Reserva taula"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+#: view:assaig.reserva:modulo_assaig.reserva_tree
+#: model:ir.actions.act_window,name:modulo_assaig.action_reserva
+#: model:ir.actions.act_window,name:modulo_assaig.action_reserva_calendar
+#: model:ir.ui.menu,name:modulo_assaig.menu_assaig_reserva_alta
+msgid "Reservas"
+msgstr "Reserves"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Revertir"
+msgstr "Revertir"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Seleccione un cliente"
+msgstr "Seleccione un client"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Seleccione una mesa"
+msgstr "Seleccione una taula"
+
+#. module: modulo_assaig
+#: selection:assaig.reserva,state:0
+msgid "Servida"
+msgstr "Servida"
+
+#. module: modulo_assaig
+#: view:assaig.reserva:modulo_assaig.reserva_form
+msgid "Servir"
+msgstr "Servir"
+
+#. module: modulo_assaig
+#: model:ir.model,name:modulo_assaig.model_assaig_cliente
+msgid "Tabla de clientes"
+msgstr "Tabla de clientes"
+
+#. module: modulo_assaig
+#: model:ir.model,name:modulo_assaig.model_assaig_configuracion
+msgid "Tabla de la configuracion"
+msgstr "Tabla de configuracion"
+
+#. module: modulo_assaig
+#: model:ir.model,name:modulo_assaig.model_assaig_mesa
+msgid "Tabla de mesas"
+msgstr "Tabla de mesas"
+
+#. module: modulo_assaig
+#: model:ir.model,name:modulo_assaig.model_assaig_reserva
+msgid "Tabla de reservas"
+msgstr "Tabla de reservas"
+
+#. module: modulo_assaig
+#: field:assaig.cliente,telefono:0
+#: selection:assaig.reserva,tipo_reserva:0
+msgid "Teléfono"
+msgstr "Telèfon"
+
+#. module: modulo_assaig
+#: selection:assaig.mesa,ubicacion:0
+msgid "Terraza"
+msgstr "Terrassa"
+
+#. module: modulo_assaig
+#: field:assaig.reserva,tipo_reserva:0
+msgid "Tipo de Reserva"
+msgstr "Tipus de Reserva"
+
+#. module: modulo_assaig
+#: field:assaig.mesa,ubicacion:0
+msgid "Ubicación"
+msgstr "Localització"
+
