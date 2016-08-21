@@ -1,5 +1,5 @@
 # Odoo 8
-##Investigation, documentatiom and create a new module hostelry in Odoo 8
+##Investigación, documentación y creación de un nuevo módulo de hosteleria en Odoo 8
 
 ###Proyecto final de curso de DAM. Año académico 2014 - 2015:
 
